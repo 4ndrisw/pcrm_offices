@@ -1,0 +1,16 @@
+
+.office-update{ background-color:#ddd; }
+
+body #office-preview .office-items table tbody td.description span{
+    color: #d1d3ea !important;
+}
+
+.customers.viewoffice #wrapper {
+    margin-left: 0;
+}
+
+@media (max-width: 1430px){
+    .customers.viewoffice .panel_s {
+        width: 100%;
+    }
+}
