@@ -43,17 +43,17 @@ $lang['office_status_expired']         = 'Expired';
 $lang['office_note']                   = 'Note:';   
 
 $lang['offices']                                = 'Offices';
-$lang['office']                                 = 'Job Report';
-$lang['office_lowercase']                       = 'job reports';
-$lang['create_new_office']                      = 'Create New Job Report';
-$lang['view_office']                            = 'View job report';
-$lang['preview_office']                            = 'Preview job report';
+$lang['office']                                 = 'Office';
+$lang['office_lowercase']                       = 'offices';
+$lang['create_new_office']                      = 'Create New Office';
+$lang['view_office']                            = 'View office';
+$lang['preview_office']                            = 'Preview office';
 $lang['office_reminders']                      = 'Reminders';
 $lang['office_notes']                          = 'Notes';
 $lang['office_add_note']                       = 'Add Note';
 $lang['office_to']                              = 'To';
 $lang['office_data_date']              = 'Date';
-$lang['office_pdf_heading']            = 'JOB REPORT';
+$lang['office_pdf_heading']            = 'OFFICE';
 $lang['office_table_item_heading']     = 'Item';
 $lang['office_table_quantity_heading'] = 'Qty';
 

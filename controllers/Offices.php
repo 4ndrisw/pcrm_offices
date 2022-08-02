@@ -296,7 +296,7 @@ class Offices extends AdminController
         }
 
 
-        $data['office_members']  = $this->offices_model->get_office_members($id);
+        //$data['office_members']  = $this->offices_model->get_office_members($id);
         //$data['office_items']    = $this->offices_model->get_office_item($id);
 
         $data['kepala_dinas']             = $this->offices_model->get_staff_by_role('', ['name' => 'Kepala Dinas']);

@@ -718,3 +718,140 @@ function get_office_name_by_id($id){
     $office = $CI->db->get()->row();
     return $office->full_name;
 }
+
+function get_office_short_name_by_id($id){
+    if(is_numeric($id)){
+        $CI = &get_instance();
+        $CI->db->select('short_name');
+        $CI->db->from(db_prefix() . 'offices');
+        $CI->db->where('id', $id);
+        $office = $CI->db->get()->row();
+        return $office->short_name;        
+    }
+    return '';
+}
+
+
+
+if (!function_exists('format_office_info')) {
+    /**
+     * Format office address info
+     * @param  object  $data        office object from database
+     * @param  string  $for         where this format will be used? Eq statement invoice etc
+     * @param  string  $type        billing/shipping
+     * @param  boolean $companyLink company link to be added on office company/name, this is used in admin area only
+     * @return string
+     */
+    function format_office_info($data, $for, $type, $companyLink = false)
+    {
+        $format   = get_option('customer_info_format');
+        $office_id = '';
+
+        if ($for == 'statement') {
+            $office_id = $data->id;
+        } elseif ($type == 'billing') {
+            $office_id = $data->id;
+        }
+
+        $filterData = [
+            'data'         => $data,
+            'for'          => $for,
+            'type'         => $type,
+            'office_id'    => $data->id,
+            'company_link' => $companyLink,
+        ];
+
+        
+        $companyName = '';
+        if ($for == 'statement') {
+            $companyName = get_office_name_by_id($office_id);
+        } elseif ($type == 'billing') {
+            $companyName = $data->full_name;
+        }
+
+
+        $acceptsPrimaryContactDisplay = ['invoice', 'estimate', 'payment', 'credit_note'];
+
+        if (in_array($for, $acceptsPrimaryContactDisplay) &&
+            isset($data->client->show_primary_contact) &&
+            $data->client->show_primary_contact == 1 &&
+            $primaryContactId = get_primary_contact_user_id($office_id)) {
+            $companyName = get_contact_full_name($primaryContactId) . '<br />' . $companyName;
+        }
+
+        $companyName = hooks()->apply_filters('office_info_format_company_name', $companyName, $filterData);
+
+        $street  = in_array($type, ['billing', 'shipping']) ? $data->{$type . '_street'} : '';
+        $city    = in_array($type, ['billing', 'shipping']) ? $data->{$type . '_city'} : '';
+        $state   = in_array($type, ['billing', 'shipping']) ? $data->{$type . '_state'} : '';
+        $zipCode = in_array($type, ['billing', 'shipping']) ? $data->{$type . '_zip'} : '';
+
+        $countryCode = '';
+        $countryName = '';
+
+        if ($country = in_array($type, ['billing', 'shipping']) ? get_country($data->{$type . '_country'}) : '') {
+            $countryCode = $country->iso2;
+            $countryName = $country->short_name;
+        }
+
+        $phone = '';
+        if ($for == 'statement' && isset($data->phonenumber)) {
+            $phone = $data->phonenumber;
+        } elseif ($type == 'billing' && isset($data->client->phonenumber)) {
+            $phone = $data->client->phonenumber;
+        }
+
+        $vat = '';
+        if ($for == 'statement' && isset($data->vat)) {
+            $vat = $data->vat;
+        } elseif ($type == 'billing' && isset($data->client->vat)) {
+            $vat = $data->client->vat;
+        }
+
+        if ($companyLink && (!isset($data->deleted_office_name) ||
+            (isset($data->deleted_office_name) &&
+                empty($data->deleted_office_name)))) {
+            $companyName = '<a href="' . admin_url('offices/office/' . $office_id) . '" target="_blank"><b>' . $companyName . '</b></a>';
+        } elseif ($companyName != '') {
+            $companyName = '<b>' . $companyName . '</b>';
+        }
+
+        $format = _info_format_replace('company_name', $companyName, $format);
+        $format = _info_format_replace('office_id', $office_id, $format);
+        $format = _info_format_replace('street', $street, $format);
+        $format = _info_format_replace('city', $city, $format);
+        $format = _info_format_replace('state', $state, $format);
+        $format = _info_format_replace('zip_code', $zipCode, $format);
+        $format = _info_format_replace('country_code', $countryCode, $format);
+        $format = _info_format_replace('country_name', $countryName, $format);
+        $format = _info_format_replace('phone', $phone, $format);
+        
+        $customFieldsCustomer = [];
+
+        // On shipping address no custom fields are shown
+        if ($type != 'shipping') {
+            $whereCF = [];
+
+
+            $customFieldsCustomer = get_custom_fields('offices', $whereCF);
+        }
+
+        foreach ($customFieldsCustomer as $field) {
+            $value  = get_custom_field_value($office_id, $field['id'], 'offices');
+            $format = _info_format_custom_field($field['id'], $field['name'], $value, $format);
+        }
+
+        // If no custom fields found replace all custom fields merge fields to empty
+        $format = _info_format_custom_fields_check($customFieldsCustomer, $format);
+        $format = _maybe_remove_first_and_last_br_tag($format);
+
+        // Remove multiple white spaces
+        $format = preg_replace('/\s+/', ' ', $format);
+        // Remove multiple coma
+        $format = preg_replace('/,{2,}/m', '', $format);
+
+        $format = trim($format);
+
+        return hooks()->apply_filters('office_info_text', $format, $filterData);
+    }
+}

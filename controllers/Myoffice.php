@@ -78,7 +78,7 @@ class Myoffice extends ClientsController
         $data['can_be_accepted']               = false;
         $data['office']                     = hooks()->apply_filters('office_html_pdf_data', $office);
         $data['bodyclass']                     = 'viewoffice';
-        $data['client_company']                = $this->clients_model->get($office->clientid)->company;
+        $data['client_company']                = get_office_name_by_id($id);
         $setSize = get_option('office_qrcode_size');
         $data['identity_confirmation_enabled'] = $identity_confirmation_enabled;
         if ($identity_confirmation_enabled == '1') {
