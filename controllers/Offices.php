@@ -254,7 +254,7 @@ class Offices extends AdminController
                 access_denied('offices');
             }
 
-            $next_schedule_number = get_option('next_office_number');
+            $next_office_number = get_option('next_office_number');
             $format = get_option('office_number_format');
             $_prefix = get_option('office_prefix');
 
@@ -311,7 +311,7 @@ class Offices extends AdminController
     public function get_number_settings($id){
         $this->db->select('prefix');
         $this->db->where('id', $id);
-        return $this->db->get(db_prefix() . 'schedules')->row();
+        return $this->db->get(db_prefix() . 'offices')->row();
 
     }
 
