@@ -131,6 +131,7 @@ $lang['office_date_text']				= 'Date';
 $lang['office_declare']                = 'hereby declare that :';
 $lang['office_result']                = 'The work has been completed with the following results:';
 $lang['office_closing']                ='This Minutes of Work Completion is made to be used properly, thank you for your attention and cooperation.';
+$lang['no_office_this_week']		='No office this week';
 
 
 /*

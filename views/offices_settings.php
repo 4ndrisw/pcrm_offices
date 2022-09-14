@@ -25,6 +25,8 @@
       <hr />
       <?php render_yes_no_option('show_project_on_office','show_project_on_office'); ?>
       <hr />
+      <?php render_yes_no_option('show_offices_clients_area_menu_items','show_offices_clients_area_menu_items'); ?>
+      <hr />
 
       <?php
       $staff = $this->staff_model->get('', ['active' => 1]);

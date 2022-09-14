@@ -154,6 +154,7 @@ add_option('office_prefix', 'UPT-');
 add_option('next_office_number', 1);
 add_option('default_office_assigned', 9);
 add_option('office_number_decrement_on_delete', 0);
+add_option('show_offices_clients_area_menu_items', 0);
 add_option('office_number_format', 4);
 add_option('office_year', date('Y'));
 add_option('exclude_office_from_client_area_with_draft_status', 1);

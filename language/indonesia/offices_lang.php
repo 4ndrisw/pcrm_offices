@@ -7,8 +7,6 @@ $lang['office_full_name']                          = 'Kantor UPT';
 $lang['office_kepala_dinas']                          = 'Kepala Dinas';
 $lang['office_kepala_upt']                          = 'Kepala UPT';
 
-
-
 $lang['settings_delete_only_on_last_office']                      = 'Menghapus Kantor UPT hanya diperbolehkan untuk faktur terakhir';
 $lang['office_prefix']                          = 'Office prefix';
 $lang['next_office_number']                          = 'Nomor Kantor UPT Berikutnya';
@@ -128,6 +126,7 @@ $lang['office_result']                = 'Telah selesai dikerjakan dengan baik  d
 $lang['office_closing']                ='Berita Acara Penyelesaian Pekerjaan ini dibuat untuk dipergunakan sebagaimana mestinya, atas perhatian dan kerjasamanya kami ucapkan terima kasih.';
 
 $lang['office_terms_and_conditions']		='Syarat dan ketentuan';
+$lang['no_office_this_week']		='Tidak ada UPT baru minggu ini';
 
 /*
 
