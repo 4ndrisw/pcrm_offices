@@ -6,6 +6,7 @@ $lang['office_full_name']                          = 'Office full name';
 
 $lang['office_kepala_dinas']                          = 'Kepala Dinas';
 $lang['office_kepala_upt']                          = 'Kepala UPT';
+$lang['office_dinas']                          = 'Kantor Dinas';
 
 $lang['office_already_send_to_client_tooltip']  = 'This office is already activated %s';
 

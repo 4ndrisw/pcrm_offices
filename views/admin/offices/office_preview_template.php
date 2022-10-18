@@ -260,14 +260,14 @@
                               <span class="bold">
                               <?php echo _l('office_kepala_dinas'); ?>:
                               </span>
-                              <?php echo get_staff_full_name($office->kepala_dinas_id); ?>
+                              <?php echo $office->kepala_dinas_nama; ?>
                            </p>
 
                            <p class="no-mbot">
                               <span class="bold">
                               <?php echo _l('office_kepala_upt'); ?>:
                               </span>
-                              <?php echo get_staff_full_name($office->kepala_upt_id); ?>
+                              <?php echo $office->kepala_upt_nama; ?>
                            </p>
 
                            <p class="no-mbot">

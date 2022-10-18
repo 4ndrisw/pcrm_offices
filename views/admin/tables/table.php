@@ -9,6 +9,7 @@ $statuses = $CI->offices_model->get_statuses();
 
 $aColumns = [
     'formatted_number',
+    'short_name',
     'full_name',
     'status',
 ];

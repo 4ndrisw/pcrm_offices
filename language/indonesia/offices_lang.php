@@ -36,6 +36,7 @@ $lang['office_status_declined']        = 'Ditolak';
 $lang['office_status_accepted']        = 'Diterima';
 $lang['office_status_expired']         = 'Expired';
 $lang['office_note']                   = 'Catatan:';   
+$lang['office_dinas']                          = 'Kantor Dinas';
 
 $lang['offices']                                = 'Kantor UPT';
 $lang['office']                                 = 'Kantor UPT';

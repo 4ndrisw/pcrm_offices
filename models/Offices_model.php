@@ -42,6 +42,7 @@ class Offices_model extends App_Model
         $this->db->from(db_prefix() . 'offices');
         //$this->db->join(db_prefix() . 'currencies', db_prefix() . 'currencies.id = ' . db_prefix() . 'offices.currency', 'left');
         $this->db->where($where);
+        
         if (is_numeric($id)) {
             $this->db->where(db_prefix() . 'offices.id', $id);
             $office = $this->db->get()->row();
@@ -56,7 +57,7 @@ class Offices_model extends App_Model
                         break;
                     }
                 }
-
+                /*
                 $office->items = get_items_by_type('office', $id);
                 if(isset($office->office_id)){
 
@@ -66,6 +67,8 @@ class Offices_model extends App_Model
                     }
 
                 }
+
+                */
                 $office->client = $this->clients_model->get($office->clientid);
 
                 if (!$office->client) {

@@ -6,40 +6,68 @@
       <hr class="hr-panel-heading" />
       <?php } ?>
       <div class="row">
-
          <div class="col-md-6">
 
             <?php $value = (isset($office) ? $office->short_name : ''); ?>
             <?php echo render_input('short_name','office_short_name',$value); ?>
-
             <?php $value = (isset($office) ? $office->full_name : ''); ?>
             <?php echo render_input('full_name','office_full_name',$value); ?>
+            <?php $value = (isset($office) ? $office->dinas : ''); ?>
+            <?php echo render_input('dinas','office_dinas',$value); ?>
+            <?php $value = (isset($office) ? $office->province : ''); ?>
+            <?php echo render_input('province','office_province',$value); ?>
+
+            <?php $value = (isset($office) ? $office->kepala_dinas_nama : ''); ?>
+            <?php echo render_input('kepala_dinas_nama','kepala_dinas_nama',$value); ?>
+            <?php $value = (isset($office) ? $office->kepala_dinas_nip : ''); ?>
+            <?php echo render_input('kepala_dinas_nip','kepala_dinas_nip',$value); ?>
+
+            <?php $value = (isset($office) ? $office->kepala_upt_nama : ''); ?>
+            <?php echo render_input('kepala_upt_nama','kepala_upt_nama',$value); ?>
+            <?php $value = (isset($office) ? $office->kepala_upt_nip : ''); ?>
+            <?php echo render_input('kepala_upt_nip','kepala_upt_nip',$value); ?>
 
 
-            <?php
-                $selected = get_option('default_office_head_office');
-                foreach($kepala_dinas as $member){
-                 if(isset($office)){
-                   if($office->kepala_dinas_id == $member['staffid']) {
-                     $selected = $member['staffid'];
-                   }
-                 }
-                }
-                echo render_select('kepala_dinas_id',$kepala_dinas,array('staffid',array('firstname','lastname')),'office_kepala_dinas',$selected);
-            ?>
 
-            <?php
-                $selected = get_option('default_office_head_upt');
-                foreach($kepala_upt as $member){
-                 if(isset($office)){
-                   if($office->kepala_upt_id == $member['staffid']) {
-                     $selected = $member['staffid'];
-                   }
-                 }
-                }
-                echo render_select('kepala_upt_id',$kepala_upt,array('staffid',array('firstname','lastname')),'office_kepala_upt',$selected);
-            ?>
+            <?php $value = (isset($office) ? $office->nama_pengawas_iil : ''); ?>
+            <?php echo render_input('nama_pengawas_iil','nama_pengawas_iil',$value); ?>
+            <?php $value = (isset($office) ? $office->nip_pengawas_iil : ''); ?>
+            <?php echo render_input('nip_pengawas_iil','nip_pengawas_iil',$value); ?>
 
+            <?php $value = (isset($office) ? $office->nama_pengawas_ipka : ''); ?>
+            <?php echo render_input('nama_pengawas_ipka','nama_pengawas_ipka',$value); ?>
+            <?php $value = (isset($office) ? $office->nip_pengawas_ipka : ''); ?>
+            <?php echo render_input('nip_pengawas_ipka','nip_pengawas_ipka',$value); ?>
+
+            <?php $value = (isset($office) ? $office->nama_pengawas_ipkh : ''); ?>
+            <?php echo render_input('nama_pengawas_ipkh','nama_pengawas_ipkh',$value); ?>
+            <?php $value = (isset($office) ? $office->nip_pengawas_ipkh : ''); ?>
+            <?php echo render_input('nip_pengawas_ipkh','nip_pengawas_ipkh',$value); ?>
+
+            <?php $value = (isset($office) ? $office->nama_pengawas_ipp : ''); ?>
+            <?php echo render_input('nama_pengawas_ipp','nama_pengawas_ipp',$value); ?>
+            <?php $value = (isset($office) ? $office->nip_pengawas_ipp : ''); ?>
+            <?php echo render_input('nip_pengawas_ipp','nip_pengawas_ipp',$value); ?>
+
+            <?php $value = (isset($office) ? $office->nama_pengawas_lie : ''); ?>
+            <?php echo render_input('nama_pengawas_lie','nama_pengawas_lie',$value); ?>
+            <?php $value = (isset($office) ? $office->nip_pengawas_lie : ''); ?>
+            <?php echo render_input('nip_pengawas_lie','nip_pengawas_lie',$value); ?>
+
+            <?php $value = (isset($office) ? $office->nama_pengawas_paa : ''); ?>
+            <?php echo render_input('nama_pengawas_paa','nama_pengawas_paa',$value); ?>
+            <?php $value = (isset($office) ? $office->nip_pengawas_paa : ''); ?>
+            <?php echo render_input('nip_pengawas_paa','nip_pengawas_paa',$value); ?>
+
+            <?php $value = (isset($office) ? $office->nama_pengawas_ptp : ''); ?>
+            <?php echo render_input('nama_pengawas_ptp','nama_pengawas_ptp',$value); ?>
+            <?php $value = (isset($office) ? $office->nip_pengawas_ptp : ''); ?>
+            <?php echo render_input('nip_pengawas_ptp','nip_pengawas_ptp',$value); ?>
+
+            <?php $value = (isset($office) ? $office->nama_pengawas_pubt : ''); ?>
+            <?php echo render_input('nama_pengawas_pubt','nama_pengawas_pubt',$value); ?>
+            <?php $value = (isset($office) ? $office->nip_pengawas_pubt : ''); ?>
+            <?php echo render_input('nip_pengawas_pubt','nip_pengawas_pubt',$value); ?>
 
 
            </div>

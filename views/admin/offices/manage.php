@@ -16,6 +16,7 @@
                     <?php } ?>
                     <?php render_datatable(array(
                         _l('office_number'),
+                        _l('office_short_name'),
                         _l('office_full_name'),
                         _l('office_status'),
                         ),'offices'); ?>
