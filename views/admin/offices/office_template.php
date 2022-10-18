@@ -34,6 +34,11 @@
             <?php $value = (isset($office) ? $office->nip_pengawas_iil : ''); ?>
             <?php echo render_input('nip_pengawas_iil','nip_pengawas_iil',$value); ?>
 
+            <?php $value = (isset($office) ? $office->nama_pengawas_ipk : ''); ?>
+            <?php echo render_input('nama_pengawas_ipk','nama_pengawas_ipk',$value); ?>
+            <?php $value = (isset($office) ? $office->nip_pengawas_ipk : ''); ?>
+            <?php echo render_input('nip_pengawas_ipk','nip_pengawas_ipk',$value); ?>
+
             <?php $value = (isset($office) ? $office->nama_pengawas_ipka : ''); ?>
             <?php echo render_input('nama_pengawas_ipka','nama_pengawas_ipka',$value); ?>
             <?php $value = (isset($office) ? $office->nip_pengawas_ipka : ''); ?>
